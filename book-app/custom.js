@@ -6,11 +6,17 @@ listWrap.addEventListener('click',function(e){
 	}
 });
 
+let ClearTime,clearMessage;
 //Add Books 
 let addBookForm = document.forms['addBook'];
 addBookForm.addEventListener('submit',function(e){
 	e.preventDefault();
 	let bookName = addBookForm.querySelector('input[type="text"]').value;
+
+	if(bookName==""){
+		alert("Please enter value");
+		return false;
+	}
 
 	//Create Elements
 	let li = document.createElement('li');
@@ -19,7 +25,7 @@ addBookForm.addEventListener('submit',function(e){
 
 	//Add values
 	title.textContent = bookName;
-	btn.textContent = "button";
+	btn.textContent = "Delete";
 
 	//Add Classes
 	title.classList.add("title");
@@ -28,7 +34,27 @@ addBookForm.addEventListener('submit',function(e){
 	//Append Elements
 	li.appendChild(title);
 	li.appendChild(btn);
-	listWrap.appendChild(li); 
+	listWrap.appendChild(li);
+
+	//Clearing already setted timeouts
+	if(ClearTime != undefined){
+		clearTimeout(ClearTime); //Avoiding previous setted timeouts
+		clearTimeout(clearMessage); //Avoiding previous setted Messages timeout
+	}
+
+	//Create new element for append purpose.
+	let flashMessage = document.createElement("p");
+	flashMessage.classList.add("flashMessage");
+	flashMessage.textContent = "Successfully Added";
+
+	//Appending flash message after 1sec for successful addition of book.
+	ClearTime = setTimeout(function(){ document.querySelector("body").appendChild(flashMessage); }, 1000);
+	
+	//Removing flash Message after 1sec for successful addition of book.
+	clearMessage = setTimeout(function(){ 
+			document.querySelector(".flashMessage").remove();
+		 }, 4000);
+
 });
 
 //Search Books
