@@ -13,8 +13,25 @@ addBookForm.addEventListener('submit',function(e){
 	e.preventDefault();
 	let bookName = addBookForm.querySelector('input[type="text"]').value;
 
-	if(bookName==""){
-		alert("Please enter value");
+	let flashMessage = document.createElement("div");
+
+	flashMessage.classList.add("flashMessage");
+	flashMessage.innerHTML=`<p> </p>
+	<button><svg style="width:inherit;height:inherit" viewBox="0 0 24 24">
+    <path fill="currentcolor" d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z" />
+</svg></button`;
+
+	flashMessage.lastChild.onclick = function(e){
+		clearTimeout(clearMessage); //Avoiding previous setted Messages timeout
+		e.target.closest('.flashMessage').remove();
+	}
+
+	if(bookName == ""){
+		if(document.getElementsByClassName("flashMessage").length != 0){
+			document.querySelector(".flashMessage").remove();
+		}
+		flashMessage.firstChild.textContent = "Please enter valid input";
+		document.querySelector("body").appendChild(flashMessage);
 		return false;
 	}
 
@@ -41,11 +58,11 @@ addBookForm.addEventListener('submit',function(e){
 		clearTimeout(ClearTime); //Avoiding previous setted timeouts
 		clearTimeout(clearMessage); //Avoiding previous setted Messages timeout
 	}
-
+	if(document.getElementsByClassName("flashMessage").length != 0){
+		document.querySelector(".flashMessage").remove();
+	}
 	//Create new element for append purpose.
-	let flashMessage = document.createElement("p");
-	flashMessage.classList.add("flashMessage");
-	flashMessage.textContent = "Successfully Added";
+	flashMessage.firstChild.textContent = "Successfully Added";
 
 	//Appending flash message after 1sec for successful addition of book.
 	ClearTime = setTimeout(function(){ document.querySelector("body").appendChild(flashMessage); }, 1000);
@@ -53,9 +70,11 @@ addBookForm.addEventListener('submit',function(e){
 	//Removing flash Message after 1sec for successful addition of book.
 	clearMessage = setTimeout(function(){ 
 			document.querySelector(".flashMessage").remove();
-		 }, 4000);
+	}, 4000);
 
 });
+
+
 
 //Search Books
 let searchBook = document.forms['searchBooks'].querySelector('input[type="text"]');
