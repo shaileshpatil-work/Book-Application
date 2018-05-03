@@ -53,29 +53,54 @@ body{
 }
 .bookList > ul > li > button{
 	padding: 5px;
-	border-radius: 5px;
 	outline: 0;
 	align-self: start;
+	cursor: pointer;
+	border-radius: 2px;
+    margin-left: 16px;
+    text-transform: uppercase;
+    background: #1E88E5;
+    color: #fff;
+    font-weight: 600;
+    border: 0;
 }
 .addNewBook{
 	margin: 0 0 20px;
 }
 .addNewBook form{
-	width: 50%;
-	margin: 0 auto;
+	/*width: 50%;*/
+	display: flex;
+	justify-content: center;
+	/*margin: 0 auto;*/
 }
 .addNewBook form input[type="text"]{
 	display: inline-block;
-	width: 70%;
-	padding: 5px;
+	/*width: 70%;*/
+	padding: 8px 12px;
+	border: 1px solid #ccc;
+	line-height: 22px;
 	box-sizing: border-box;
+	border-radius: 2px;
+	flex-basis: 35%;
+	color: #666;
 }
-.addNewBook form input[type="submit"]{
-	display: inline-block;
-	width: 25%;
-	padding: 5px;
-	box-sizing: border-box;
+.addNewBook form input[type="text"]:focus{
+	outline: 0;
+}
+.addNewBook form input[type="text"]::placeholder{
+   color: #ccc;
+}
 
+
+.addNewBook form input[type="submit"]{
+	border-radius: 2px;
+	margin-left: 16px;
+    padding: 8px 16px;		
+    text-transform: uppercase;
+	background:#1E88E5;
+	color: #fff;
+	font-weight:600;
+	border:0;
 }
 .flashMessage{
 	position: fixed;

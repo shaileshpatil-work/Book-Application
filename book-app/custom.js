@@ -53,6 +53,8 @@ addBookForm.addEventListener('submit',function(e){
 	li.appendChild(btn);
 	listWrap.appendChild(li);
 
+	addBookForm.querySelector('input[type="text"]').value="";
+
 	//Clearing already setted timeouts
 	if(ClearTime != undefined){
 		clearTimeout(ClearTime); //Avoiding previous setted timeouts
@@ -86,7 +88,7 @@ searchBook.addEventListener('keyup',function(e){
 		let bookTitle = book.firstElementChild.textContent;
 		
 		if(bookTitle.toLowerCase().indexOf(term) != -1){
-			book.style.display="block";
+			book.style.display="flex";
 		}
 		else{
 			book.style.display="none";
