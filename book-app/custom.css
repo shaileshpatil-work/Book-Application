@@ -68,14 +68,11 @@ body{
 	margin: 0 0 20px;
 }
 .addNewBook form{
-	/*width: 50%;*/
 	display: flex;
 	justify-content: center;
-	/*margin: 0 auto;*/
 }
 .addNewBook form input[type="text"]{
 	display: inline-block;
-	/*width: 70%;*/
 	padding: 8px 12px;
 	border: 1px solid #ccc;
 	line-height: 22px;
@@ -90,8 +87,6 @@ body{
 .addNewBook form input[type="text"]::placeholder{
    color: #ccc;
 }
-
-
 .addNewBook form input[type="submit"]{
 	border-radius: 2px;
 	margin-left: 16px;
